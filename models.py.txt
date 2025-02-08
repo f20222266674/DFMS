@@ -1,0 +1,16 @@
+from database import db
+
+class Animal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    breed = db.Column(db.String(100))
+
+class MilkProduction(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'))
+    quantity = db.Column(db.Float)
+
+class FeedInventory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    feed_type = db.Column(db.String(100))
+    quantity = db.Column(db.Float)

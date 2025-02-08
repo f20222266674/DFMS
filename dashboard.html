@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Farm Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Dairy Farm Management System</h1>
+
+    <h2>Animals</h2>
+    <ul>
+        {% for animal in animals %}
+        <li>{{ animal.name }} - {{ animal.breed }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/add_animal" method="POST">
+        <input type="text" name="name" placeholder="Animal Name" required>
+        <input type="text" name="breed" placeholder="Breed" required>
+        <button type="submit">Add Animal</button>
+    </form>
+
+    <h2>Milk Production</h2>
+    <ul>
+        {% for milk in milk_stats %}
+        <li>Animal ID: {{ milk.animal_id }} - Quantity: {{ milk.quantity }} liters</li>
+        {% endfor %}
+    </ul>
+    <form action="/add_milk" method="POST">
+        <input type="number" name="animal_id" placeholder="Animal ID" required>
+        <input type="number" name="quantity" placeholder="Milk Quantity (liters)" required>
+        <button type="submit">Add Milk Production</button>
+    </form>
+
+    <h2>Feed Inventory</h2>
+    <ul>
+        {% for feed in feed_inventory %}
+        <li>{{ feed.feed_type }} - {{ feed.quantity }} kg</li>
+        {% endfor %}
+    </ul>
+    <form action="/add_feed" method="POST">
+        <input type="text" name="feed_type" placeholder="Feed Type" required>
+        <input type="number" name="quantity" placeholder="Quantity (kg)" required>
+        <button type="submit">Add Feed Inventory</button>
+    </form>
+</body>
+</html>
